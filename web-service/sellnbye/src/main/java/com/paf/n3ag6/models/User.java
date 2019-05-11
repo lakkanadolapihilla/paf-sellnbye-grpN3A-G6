@@ -1,0 +1,76 @@
+package com.paf.n3ag6.models;
+
+import com.paf.n3ag6.models.Enums.UserType;
+
+public class User {
+	
+	private String username;
+	private String contactNo;
+	private UserType userType;
+	private String password;
+	private String email;
+	private String profilePicture;
+	private boolean isActive;
+	
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
+	public String getContactNo() {
+		return contactNo;
+	}
+
+	public void setContactNo(String contactNo) {
+		this.contactNo = contactNo;
+	}
+	
+	public UserType getUserType() {
+		return userType;
+	}
+
+	public void setUserType(UserType userType) {
+		this.userType = userType;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	public String getProfilePicture() {
+		return profilePicture;
+	}
+
+	public void setProfilePicture(String profilePicture) {
+		this.profilePicture = profilePicture;
+	}
+	
+	public boolean getIsActive() {
+		return isActive;
+	}
+
+	public void setIsActive(boolean isActive) {
+		this.isActive = isActive;
+	}
+	
+	@Override
+	public String toString() {
+		return "Track [username=" + this.username + ", contactNo=" + this.contactNo + ", userType=" + this.userType + "]";
+	}
+
+}
