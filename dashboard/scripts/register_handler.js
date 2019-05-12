@@ -7,25 +7,28 @@ $("#buyer_registration_form").submit(function (event) {
         var reader = new FileReader();
         reader.readAsDataURL($("#registration_inputProfilepicture").prop('files')[0]);
         reader.onload = function () {
+
+            var passwordHash = SHA256($("#registration_inputPassword").val());
             data = {
                 "contactNo": $("#registration_inputContactnumber").val(),
                 "email": $("#registration_inputEmail").val(),
-                "passwordHash": $("#registration_inputPassword").val(),
+                "passwordHash": passwordHash.toUpperCase(),
                 "profilePicture": reader.result,
                 "username": $("#registration_inputUsername").val()
             }
-
+            
             $.ajax("http://localhost:8080/sellnbye/api/user", {
                 data: JSON.stringify(data),
                 contentType: 'application/json',
                 type: 'POST'
             }).done(function (response) {
-                console.log(response)
+                if (response === true) {
+                    location.reload();
+                }
+                else {
+                    alert("Adding user failed");
+                }
             });
         };
-
-
     }
-
-
 });

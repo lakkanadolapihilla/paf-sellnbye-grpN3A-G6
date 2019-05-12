@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Twitter Bootstrap shopping cart</title>
+	<title>SellNBye</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author" content="">
@@ -41,7 +41,7 @@
 					</div>
 					<a href="index.html"> <span class="icon-home"></span> Home</a>
 					<a href="#"><span class="icon-user"></span> My Account</a>
-					<a class="active" href="register.html"><span class="icon-edit"></span> Free Register </a>
+					<a href="register.html"><span class="icon-edit"></span> Free Register </a>
 					<a href="contact.html"><span class="icon-envelope"></span> Contact us</a>
 					<a href="cart.html"><span class="icon-shopping-cart"></span> 2 Item(s) - <span class="badge badge-warning">
 							$448.42</span></a>
@@ -88,10 +88,7 @@ Navigation Bar Section
 					<div class="nav-collapse">
 						<ul class="nav">
 							<li class=""><a href="index.html">Home </a></li>
-							<li class=""><a href="users.html">List View</a></li>
-							<li class=""><a href="grid-view.html">Grid View</a></li>
-							<li class=""><a href="three-col.html">Three Column</a></li>
-							<li class=""><a href="four-col.html">Four Column</a></li>
+							<li class="active"><a href="users.html">Users</a></li>
 							<li class=""><a href="general.html">General Content</a></li>
 						</ul>
 						<form action="#" class="navbar-search pull-left">
@@ -107,7 +104,7 @@ Navigation Bar Section
 											<input type="text" class="span2" id="inputEmail" placeholder="Email">
 										</div>
 										<div class="control-group">
-											<input type="password" class="span2" placeholder="Password">
+											<input type="password" class="span2" id="inputPassword" placeholder="Password">
 										</div>
 										<div class="control-group">
 											<label class="checkbox">
@@ -197,70 +194,9 @@ Body Section
 
 			</div>
 			<div class="span9">
-				<ul class="breadcrumb">
-					<li><a href="index.html">Home</a> <span class="divider">/</span></li>
-					<li class="active">Registration</li>
-				</ul>
-				<h3> Registration</h3>
-				<hr class="soft" />
-				<div class="well">
-					<form id="buyer_registration_form" class="form-horizontal">
-						<h3>Your Personal Details</h3>
-						<div class="control-group">
-							<label class="control-label" for="registration_inputUsername">Username <sup>*</sup></label>
-							<div class="controls">
-								<input type="text" id="registration_inputUsername" placeholder="First Name">
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="registration_inputContactnumber">Contact Number <sup>*</sup></label>
-							<div class="controls">
-								<input type="text" id="registration_inputContactnumber" placeholder="Contact Number">
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="registration_inputEmail">Email <sup>*</sup></label>
-							<div class="controls">
-								<input type="text" id="registration_inputEmail" placeholder="Email">
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label">Password <sup>*</sup></label>
-							<div class="controls">
-								<input type="password" id="registration_inputPassword" placeholder="Password">
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label">Profile Picture</label>
-							<div class="controls">
-								<input type="file" id="registration_inputProfilepicture" placeholder="Photo" accept=".png, .jpg, .jpeg">
-							</div>
-						</div>
-						<div class="control-group">
-							<div class="controls">
-								<input type="submit" name="submitAccount" value="Register" class="exclusive shopBtn">
-							</div>
-						</div>
-					</form>
+				<div id="users_userlist" class="well well-small">
+					
 				</div>
-
-				<div class="well">
-					<form class="form-horizontal">
-						<h3>Your Address Details</h3>
-						<div class="control-group">
-							<label class="control-label">Address<sup>*</sup></label>
-							<div class="controls">
-								<textarea></textarea>
-							</div>
-						</div>
-						<div class="control-group">
-							<div class="controls">
-								<input type="submit" name="submitAccount" value="Add" class="shopBtn exclusive">
-							</div>
-						</div>
-					</form>
-				</div>
-
 			</div>
 		</div>
 		<!-- 
@@ -351,8 +287,7 @@ Footer
 	<script src="assets/js/jquery.easing-1.3.min.js"></script>
 	<script src="assets/js/jquery.scrollTo-1.4.3.1-min.js"></script>
 	<script src="assets/js/shop.js"></script>
-	<script src="scripts/register_handler.js"></script>
-	<script src="scripts/sha256.js"></script>
+	<script src="scripts/users_handler.js"></script>
 </body>
 
 </html>
