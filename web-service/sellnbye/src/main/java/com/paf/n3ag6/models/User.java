@@ -67,10 +67,5 @@ public class User {
 	public void setIsActive(boolean isActive) {
 		this.isActive = isActive;
 	}
-	
-	@Override
-	public String toString() {
-		return "Track [username=" + this.username + ", contactNo=" + this.contactNo + ", userType=" + this.userType + "]";
-	}
 
 }

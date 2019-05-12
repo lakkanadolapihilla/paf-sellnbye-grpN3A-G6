@@ -1,8 +1,8 @@
 package com.paf.n3ag6.services;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -38,17 +38,29 @@ public class UserService {
 	@Path("/{name}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public User GetUser(@PathParam("name") String name) {
+		UserDao userDao = new UserDao();
+		try {
+			User user = new User();
+			user = userDao.getUser(name);
+			return user;
+		} finally {
+			userDao.dispose();
+			System.out.println("[Info][UserService][GetUser] - userDao disposed.");
+		}
+	}
 
-		User usr = new User();
-		usr.setUsername(name);
-		usr.setUserType(UserType.Admin);
-		usr.setContactNo("0777812418");
-		usr.setEmail("email@email.com");
-		usr.setPasswordHash("1111");
-		usr.setProfilePicture("aaa");
-		usr.setIsActive(true);
-
-		return usr;
+	@POST
+	@Path("")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public boolean AddUser(User user) {
+		UserDao userDao = new UserDao();
+		try {
+			user.setIsActive(true);
+			user.setUserType(UserType.Buyer);
+			return userDao.addUser(user);
+		} finally {
+			userDao.dispose();
+		}
 	}
 
 	@PUT

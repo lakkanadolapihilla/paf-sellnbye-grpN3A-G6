@@ -68,3 +68,6 @@ CREATE TABLE IF NOT EXISTS addresses(
     PRIMARY KEY (addressId),
     FOREIGN KEY (username) REFERENCES users(username)
 );
+
+ALTER TABLE users MODIFY profilePicture MEDIUMBLOB;
+ALTER TABLE products MODIFY productImage MEDIUMBLOB;

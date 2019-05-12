@@ -18,17 +18,9 @@
 			<param-value>true</param-value>
 		</init-param>
 		<init-param>
-            <param-name>dbConnectionString</param-name>
-            <param-value>#CC0000</param-value>
-        </init-param>		
-        <init-param>
-            <param-name>dbUser</param-name>
-            <param-value>#CC0000</param-value>
-        </init-param>
-        <init-param>
-            <param-name>dbPassword</param-name>
-            <param-value>#CC0000</param-value>
-        </init-param>
+  			<param-name>com.sun.jersey.spi.container.ContainerResponseFilters</param-name>
+  			<param-value>com.paf.n3ag6.filters.CORSFilter</param-value>
+		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
