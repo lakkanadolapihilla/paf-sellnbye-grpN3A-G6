@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import com.paf.n3ag6.database.DbConnection;
+import com.paf.n3ag6.models.AuthResponse;
 import com.paf.n3ag6.models.Enums.UserType;
 import com.paf.n3ag6.models.User;
 
@@ -105,6 +106,39 @@ public class UserDao {
 			isSuccess = false;
 		}
 		return isSuccess;
+	}
+	
+	public AuthResponse authenticate (String username, String password) {
+		AuthResponse authResponse = new AuthResponse();
+		try {
+
+			String sql;
+			sql = "SELECT passwordHash, userType FROM users WHERE username = ?";
+
+			PreparedStatement stmt = this._dbConnection.prepareStatement(sql);
+
+			stmt.setString(1, username);
+
+			ResultSet rs = stmt.executeQuery();
+
+			if (rs.next()) {
+				
+				String pwFromDb = rs.getString("passwordHash");
+				
+				if(pwFromDb.toUpperCase().equals(password.toUpperCase())) {
+					authResponse.setIsAuthenticated(true);
+					authResponse.setUserType(UserType.valueOf(rs.getString("userType")));
+				}else {
+					authResponse.setIsAuthenticated(false);
+				}
+
+			}
+
+		} catch (Exception ex) {
+			authResponse.setIsAuthenticated(false);
+			System.out.println("[Error][UserDao][getUser] - " + ex.getMessage());
+		}		
+		return authResponse;
 	}
 
 	public void dispose() {

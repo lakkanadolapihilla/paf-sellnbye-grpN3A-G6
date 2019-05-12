@@ -14,6 +14,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.paf.n3ag6.dao.UserDao;
+import com.paf.n3ag6.models.AuthRequest;
+import com.paf.n3ag6.models.AuthResponse;
 import com.paf.n3ag6.models.Enums.UserType;
 import com.paf.n3ag6.models.User;
 
@@ -67,7 +69,7 @@ public class UserService {
 	@Path("/{name}")
 	public Response EditUserStatus(@PathParam("name") String name) {
 
-		String output = "Jersey say : Bullshit ";
+		String output = "Jersey say : ";
 
 		return Response.status(200).entity(output).build();
 
@@ -77,7 +79,7 @@ public class UserService {
 	@Path("/{name}/address")
 	public Response AddAddressStatus(@PathParam("name") String name) {
 
-		String output = "Jersey say : Bullshit ";
+		String output = "Jersey say : ";
 
 		return Response.status(200).entity(output).build();
 
@@ -87,7 +89,7 @@ public class UserService {
 	@Path("/{name}/address/{id}")
 	public Response DeleteAddressStatus(@PathParam("name") String name, @PathParam("id") int id) {
 
-		String output = "Jersey say : Bullshit ";
+		String output = "Jersey say : ";
 
 		return Response.status(200).entity(output).build();
 
@@ -95,11 +97,18 @@ public class UserService {
 
 	@POST
 	@Path("/login")
-	public Response Authenticate() {
+	@Consumes(MediaType.APPLICATION_JSON)
+	public AuthResponse Authenticate(AuthRequest authRequest) {
 
-		String output = "Jersey say : Bullshit ";
-
-		return Response.status(200).entity(output).build();
+		UserDao userDao = new UserDao();
+		try {
+			AuthResponse authResponse = new AuthResponse();
+			authResponse = userDao.authenticate(authRequest.getUsername(), authRequest.getPassword());
+			return authResponse;
+		} finally {
+			userDao.dispose();
+			System.out.println("[Info][UserService][Authenticate] - userDao disposed.");
+		}
 
 	}
 

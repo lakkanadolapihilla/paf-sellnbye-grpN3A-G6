@@ -4,7 +4,7 @@ $("#users_userlist").ready(function () {
         contentType: 'application/json',
         type: 'GET'
     }).done(function (response) {
-        var newItem="";
+        var newItem = "";
         $.each(response, function (index, value) {
 
             newItem += `<hr class="soften">
@@ -35,8 +35,19 @@ $("#users_userlist").ready(function () {
 
         $("#users_userlist").append(newItem);
     });
+});
 
-
-
-
-})
+$("#login_form").submit(function (event) {
+    event.preventDefault();
+    data = {
+        "password": SHA256($("#login_inputPassword").val()).toUpperCase(),
+        "username": $("#login_inputUserName").val()
+    }
+    $.ajax("http://localhost:8080/sellnbye/api/user/login", {
+        data: JSON.stringify(data),
+        contentType: 'application/json',
+        type: 'POST'
+    }).done(function (response) {
+        console.log(response);
+    });
+});
