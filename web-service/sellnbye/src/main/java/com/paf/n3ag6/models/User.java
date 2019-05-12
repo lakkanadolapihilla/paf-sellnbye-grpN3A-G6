@@ -7,7 +7,7 @@ public class User {
 	private String username;
 	private String contactNo;
 	private UserType userType;
-	private String password;
+	private String passwordHash;
 	private String email;
 	private String profilePicture;
 	private boolean isActive;
@@ -36,12 +36,12 @@ public class User {
 		this.userType = userType;
 	}
 	
-	public String getPassword() {
-		return password;
+	public String getPasswordHash() {
+		return passwordHash;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPasswordHash(String passwordhash) {
+		this.passwordHash = passwordhash;
 	}
 	
 	public String getEmail() {

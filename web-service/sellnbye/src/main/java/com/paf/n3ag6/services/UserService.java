@@ -1,5 +1,8 @@
 package com.paf.n3ag6.services;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -10,11 +13,26 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.paf.n3ag6.dao.UserDao;
 import com.paf.n3ag6.models.Enums.UserType;
 import com.paf.n3ag6.models.User;
 
 @Path("/user")
 public class UserService {
+
+	@GET
+	@Path("")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ArrayList<User> GetUserList() {
+		UserDao userDao = new UserDao();
+		try {
+			ArrayList<User> userList = new ArrayList<User>();
+			userList = userDao.getAllUsers();
+			return userList;
+		} finally {
+			userDao.dispose();
+		}
+	}
 
 	@GET
 	@Path("/{name}")
@@ -23,10 +41,10 @@ public class UserService {
 
 		User usr = new User();
 		usr.setUsername(name);
-		usr.setUserType(UserType.ADMIN);
+		usr.setUserType(UserType.Admin);
 		usr.setContactNo("0777812418");
 		usr.setEmail("email@email.com");
-		usr.setPassword("1111");
+		usr.setPasswordHash("1111");
 		usr.setProfilePicture("aaa");
 		usr.setIsActive(true);
 

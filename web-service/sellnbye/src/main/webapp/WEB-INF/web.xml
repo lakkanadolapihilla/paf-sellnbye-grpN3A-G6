@@ -17,6 +17,18 @@
 			<param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
 			<param-value>true</param-value>
 		</init-param>
+		<init-param>
+            <param-name>dbConnectionString</param-name>
+            <param-value>#CC0000</param-value>
+        </init-param>		
+        <init-param>
+            <param-name>dbUser</param-name>
+            <param-value>#CC0000</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbPassword</param-name>
+            <param-value>#CC0000</param-value>
+        </init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>

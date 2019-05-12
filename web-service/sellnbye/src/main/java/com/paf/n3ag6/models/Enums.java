@@ -4,7 +4,7 @@ public class Enums {
 	
 	public enum UserType {
 		
-		ADMIN,SELLER,BUYER
+		Admin,Seller,Buyer
 		
 	}
 }
