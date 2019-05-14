@@ -24,6 +24,7 @@ $("#buyer_registration_form").submit(function (event) {
             }).done(function (response) {
                 if (response === true) {
                     location.reload();
+                    alert("Added successfully");
                 }
                 else {
                     alert("Adding user failed");
