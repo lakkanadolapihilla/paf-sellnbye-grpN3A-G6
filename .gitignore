@@ -26,6 +26,7 @@ tomcat
 target/
 log/
 .metadata/
+bin/
 
 # IntelliJ project files 
 *.iml
