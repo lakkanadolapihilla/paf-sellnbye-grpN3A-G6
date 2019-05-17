@@ -27,7 +27,7 @@ $("#add_Product_form").submit(function (event) {
                     alert("Added Successfully");
                 }
                 else {
-                    alert("Adding user failed");
+                    alert("Adding product details failed");
                 }
             });
         };
