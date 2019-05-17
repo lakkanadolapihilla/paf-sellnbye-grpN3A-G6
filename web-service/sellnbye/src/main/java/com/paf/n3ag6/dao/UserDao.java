@@ -107,8 +107,62 @@ public class UserDao {
 		}
 		return isSuccess;
 	}
-	
-	public AuthResponse authenticate (String username, String password) {
+
+	public boolean updateUser(User user) {
+		boolean isSuccess;
+		try {
+
+			String sql;
+			sql = "UPDATE users SET contactNo = ? ,userType = ? ,passwordHash = ? ,email = ? ,profilePicture = ? , isActive = ? WHERE username = ?";
+
+			PreparedStatement stmt = this._dbConnection.prepareStatement(sql);
+
+			stmt.setString(7, user.getUsername());
+			stmt.setString(1, user.getContactNo());
+			stmt.setString(2, user.getUserType().name());
+			stmt.setString(3, user.getPasswordHash());
+			stmt.setString(4, user.getEmail());
+			stmt.setBlob(5, new ByteArrayInputStream(user.getProfilePicture().getBytes()));
+			stmt.setBoolean(6, user.getIsActive());
+
+			isSuccess = stmt.executeUpdate() > 0;
+
+		} catch (Exception ex) {
+			System.out.println("[Error][UserDao][updateUser] - " + ex.toString());
+			isSuccess = false;
+		}
+		return isSuccess;
+	}
+
+	public boolean isRegisteredUser(String username) {
+
+		boolean isUserRegistered = false;
+
+		try {
+			String sql;
+			sql = "SELECT * FROM users WHERE username = ?";
+
+			PreparedStatement stmt = this._dbConnection.prepareStatement(sql);
+
+			stmt.setString(1, username);
+
+			ResultSet rs = stmt.executeQuery();
+			if (rs.next()) {
+				isUserRegistered = true;
+			} else {
+				isUserRegistered = false;
+			}
+
+		} catch (Exception ex) {
+			System.out.println("[Error][UserDao][isRegisteredUser] - " + ex.toString());
+			isUserRegistered = false;
+		}
+
+		return isUserRegistered;
+
+	}
+
+	public AuthResponse authenticate(String username, String password) {
 		AuthResponse authResponse = new AuthResponse();
 		try {
 
@@ -122,13 +176,13 @@ public class UserDao {
 			ResultSet rs = stmt.executeQuery();
 
 			if (rs.next()) {
-				
+
 				String pwFromDb = rs.getString("passwordHash");
-				
-				if(pwFromDb.toUpperCase().equals(password.toUpperCase())) {
+
+				if (pwFromDb.toUpperCase().equals(password.toUpperCase())) {
 					authResponse.setIsAuthenticated(true);
 					authResponse.setUserType(UserType.valueOf(rs.getString("userType")));
-				}else {
+				} else {
 					authResponse.setIsAuthenticated(false);
 				}
 
@@ -137,7 +191,7 @@ public class UserDao {
 		} catch (Exception ex) {
 			authResponse.setIsAuthenticated(false);
 			System.out.println("[Error][UserDao][getUser] - " + ex.getMessage());
-		}		
+		}
 		return authResponse;
 	}
 

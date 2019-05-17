@@ -26,7 +26,9 @@ $("#users_userlist").ready(function () {
                     <form class="form-horizontal qtyFrm">
                         <h3> ${value.userType}</h3><br>
                         <div class="btn-group">
-                            <a href="product_details.html" class="shopBtn">EDIT</a>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            EDIT
+                        </button>
                         </div>
                     </form>
                 </div>

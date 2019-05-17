@@ -126,6 +126,7 @@ Body Section
 
   			<div class="span9">
   				<div id="users_userlist" class="well well-small">
+  					<!-- Button trigger modal -->
 
   				</div>
   			</div>
@@ -213,6 +214,64 @@ Footer
   	</div>
   	<a href="#" class="gotop"><i class="icon-double-angle-up"></i></a>
   	<!-- Placed at the end of the document so the pages load faster -->
+  	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  		aria-hidden="true">
+  		<div class="modal-dialog" role="document">
+  			<div class="modal-content">
+  				<div class="modal-header">
+  					<h5 class="modal-title" id="exampleModalLabel">Edit User</h5>
+  					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+  						<span aria-hidden="true">&times;</span>
+  					</button>
+  				</div>
+  				<div class="modal-body">
+  					<div class="well">
+  						<form id="edituser_form" class="form-horizontal">
+  							<h3>Your Personal Details</h3>
+  							<div class="control-group">
+  								<label class="control-label" for="edituser_inputUsername">Username
+  									<sup>*</sup></label>
+  								<div class="controls">
+  									<input type="text" id="edituser_inputUsername" placeholder="First Name" disabled>
+  								</div>
+  							</div>
+  							<div class="control-group">
+  								<label class="control-label" for="edituser_inputContactnumber">Contact Number
+  									<sup>*</sup></label>
+  								<div class="controls">
+  									<input type="text" id="edituser_inputContactnumber" placeholder="Contact Number">
+  								</div>
+  							</div>
+  							<div class="control-group">
+  								<label class="control-label" for="edituser_inputEmail">Email <sup>*</sup></label>
+  								<div class="controls">
+  									<input type="text" id="edituser_inputEmail" placeholder="Email">
+  								</div>
+  							</div>
+
+  							<div class="control-group">
+  								<label class="control-label" for="edituser_isActive">Active <sup>*</sup></label>
+  								<div class="controls">
+  									<input type="checkbox" id="edituser_isActive" name="Active" value="Active">
+  								</div>
+  							</div>
+  							<div class="control-group">
+  								<div class="controls">
+  									<input type="submit" name="submitAccount" value="Edit" class="exclusive shopBtn">
+  								</div>
+  							</div>
+  						</form>
+  					</div>
+  				</div>
+  				<div class="modal-footer">
+  					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+  					<button type="button" class="btn btn-primary">Save changes</button>
+  				</div>
+  			</div>
+  		</div>
+  	</div>
+
+
   	<script src="assets/js/jquery.js"></script>
   	<script src="assets/js/bootstrap.min.js"></script>
   	<script src="assets/js/jquery.easing-1.3.min.js"></script>

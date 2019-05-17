@@ -67,12 +67,18 @@ public class UserService {
 
 	@PUT
 	@Path("/{name}")
-	public Response EditUserStatus(@PathParam("name") String name) {
-
-		String output = "Jersey say : ";
-
-		return Response.status(200).entity(output).build();
-
+	public boolean EditUser(User user) {
+		UserDao userDao = new UserDao();
+		try {
+			user.setUserType(UserType.Buyer);
+			if (userDao.isRegisteredUser(user.getUsername())) {
+				return userDao.updateUser(user);
+			} else {
+				return false;
+			}
+		} finally {
+			userDao.dispose();
+		}
 	}
 
 	@POST
