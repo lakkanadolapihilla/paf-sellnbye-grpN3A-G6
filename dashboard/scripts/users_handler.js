@@ -1,6 +1,6 @@
 $("#users_userlist").ready(function () {
 
-    $.ajax("http://localhost:8080/sellnbye/api/user", {
+    $.ajax("http://localhost:8082/sellnbye/api/user", {
         contentType: 'application/json',
         type: 'GET'
     }).done(function (response) {
