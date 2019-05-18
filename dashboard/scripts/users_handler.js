@@ -29,6 +29,12 @@ $("#users_userlist").ready(function () {
                         <button type="button" id="user_editUser_btn" class="btn btn-primary">
                             EDIT
                         </button>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <button type="button" id="user_deleteUser_btn" class="btn btn-danger">
+                            DELETE
+                        </button>
                         </div>
                     </form>
                 </div>
@@ -73,6 +79,22 @@ $('body').on('click', '#user_editUser_btn', function (event) {
     });
 
     $('#exampleModal').modal('show');
+});
+
+$('body').on('click', '#user_deleteUser_btn', function (event) {
+    var username = $(event.target).parent().parent().parent().parent().find('.username_header_id').html();
+
+    $.ajax(`http://localhost:8080/sellnbye/api/user/${username}`, {
+        contentType: 'application/json',
+        type: 'DELETE'
+    }).done(function (response) {
+        location.reload();
+        if (response) {
+            alert("Successfully Deleted");
+        } else {
+            alert("Delete Failed");
+        }
+    });
 });
 
 $("#edituser_form").submit(function (event) {

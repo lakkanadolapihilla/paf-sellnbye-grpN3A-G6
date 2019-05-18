@@ -51,6 +51,19 @@ public class UserService {
 			System.out.println("[Info][UserService][GetUser] - userDao disposed.");
 		}
 	}
+	
+	@DELETE
+	@Path("/{name}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public boolean DeleteUser(@PathParam("name") String name) {
+		UserDao userDao = new UserDao();
+		try {
+			return userDao.deleteUser(name);
+		} finally {
+			userDao.dispose();
+			System.out.println("[Info][UserService][GetUser] - userDao disposed.");
+		}
+	}
 
 	@POST
 	@Path("")

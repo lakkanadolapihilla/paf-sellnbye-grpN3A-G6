@@ -160,6 +160,27 @@ public class UserDao {
 
 	}
 
+	public boolean deleteUser(String username) {
+		boolean isSuccess = false;
+		try {
+
+			String sql;
+			sql = "DELETE FROM users WHERE username = ? AND userType <> ?";
+
+			PreparedStatement stmt = this._dbConnection.prepareStatement(sql);
+
+			stmt.setString(1, username);
+			stmt.setString(2, UserType.Admin.name());
+
+			isSuccess = stmt.executeUpdate() > 0;
+
+		} catch (Exception ex) {
+			System.out.println("[Error][UserDao][addUser] - " + ex.toString());
+			isSuccess = false;
+		}
+		return isSuccess;
+	} 
+	
 	public AuthResponse authenticate(String username, String password) {
 		AuthResponse authResponse = new AuthResponse();
 		try {
