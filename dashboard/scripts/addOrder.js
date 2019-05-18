@@ -12,7 +12,7 @@ $("#add_Order_form").submit(function (event) {
                 "qty": $("#addOrdder_inputQty").val()
             }
             
-            $.ajax("http://localhost:8082/sellnbye/api/order", {
+            $.ajax("http://localhost:8080/sellnbye/api/order", {
                 data: JSON.stringify(data),
                 contentType: 'application/json',
                 type: 'POST'

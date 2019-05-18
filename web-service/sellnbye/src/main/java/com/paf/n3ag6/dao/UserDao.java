@@ -11,6 +11,7 @@ import com.paf.n3ag6.database.DbConnection;
 import com.paf.n3ag6.models.AuthResponse;
 import com.paf.n3ag6.models.Enums.UserType;
 import com.paf.n3ag6.models.User;
+import com.paf.n3ag6.models.UserUpdateModel;
 
 public class UserDao {
 
@@ -108,22 +109,19 @@ public class UserDao {
 		return isSuccess;
 	}
 
-	public boolean updateUser(User user) {
+	public boolean updateUser(UserUpdateModel user) {
 		boolean isSuccess;
 		try {
 
 			String sql;
-			sql = "UPDATE users SET contactNo = ? ,userType = ? ,passwordHash = ? ,email = ? ,profilePicture = ? , isActive = ? WHERE username = ?";
+			sql = "UPDATE users SET contactNo = ? ,email = ? , isActive = ? WHERE username = ?";
 
 			PreparedStatement stmt = this._dbConnection.prepareStatement(sql);
 
-			stmt.setString(7, user.getUsername());
+			stmt.setString(4, user.getUsername());
 			stmt.setString(1, user.getContactNo());
-			stmt.setString(2, user.getUserType().name());
-			stmt.setString(3, user.getPasswordHash());
-			stmt.setString(4, user.getEmail());
-			stmt.setBlob(5, new ByteArrayInputStream(user.getProfilePicture().getBytes()));
-			stmt.setBoolean(6, user.getIsActive());
+			stmt.setString(2, user.getEmail());
+			stmt.setBoolean(3, user.getIsActive());
 
 			isSuccess = stmt.executeUpdate() > 0;
 

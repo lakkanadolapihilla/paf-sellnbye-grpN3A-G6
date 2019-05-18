@@ -1,6 +1,6 @@
 $("#orders_orderlist").ready(function () {
 
-    $.ajax("http://localhost:8082/sellnbye/api/order", {
+    $.ajax("http://localhost:8080/sellnbye/api/order", {
         contentType: 'application/json',
         type: 'GET'
     }).done(function (response) {

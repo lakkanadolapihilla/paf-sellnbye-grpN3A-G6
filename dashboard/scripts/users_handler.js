@@ -1,6 +1,6 @@
 $("#users_userlist").ready(function () {
 
-    $.ajax("http://localhost:8082/sellnbye/api/user", {
+    $.ajax("http://localhost:8080/sellnbye/api/user", {
         contentType: 'application/json',
         type: 'GET'
     }).done(function (response) {
@@ -13,7 +13,7 @@ $("#users_userlist").ready(function () {
                     <img src="${value.profilePicture}" alt="" height="130" width="100">
                 </div>
                 <div class="span6">
-                    <h5>${value.username}</h5>
+                    <h5 class="username_header_id">${value.username}</h5>
                     <p>
                         ${value.email}
                     </p>
@@ -26,7 +26,7 @@ $("#users_userlist").ready(function () {
                     <form class="form-horizontal qtyFrm">
                         <h3> ${value.userType}</h3><br>
                         <div class="btn-group">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        <button type="button" id="user_editUser_btn" class="btn btn-primary">
                             EDIT
                         </button>
                         </div>
@@ -52,4 +52,53 @@ $("#login_form").submit(function (event) {
     }).done(function (response) {
         console.log(response);
     });
+});
+
+$('body').on('click', '#user_editUser_btn', function (event) {
+    var username = $(event.target).parent().parent().parent().parent().find('.username_header_id').html();
+
+    $.ajax(`http://localhost:8080/sellnbye/api/user/${username}`, {
+        contentType: 'application/json',
+        type: 'GET'
+    }).done(function (response) {
+        $("#edituser_inputUsername").val(response.username);
+        $("#edituser_inputContactnumber").val(response.contactNo);
+        $("#edituser_inputEmail").val(response.email);
+
+        if (response.isActive) {
+            $("#edituser_isActive").prop('checked', true);
+        } else {
+            $("#edituser_isActive").prop('checked', false);
+        }
+    });
+
+    $('#exampleModal').modal('show');
+});
+
+$("#edituser_form").submit(function (event) {
+    event.preventDefault();
+
+    var requestData = {
+        username : $("#edituser_inputUsername").val(),
+        isActive : $("#edituser_isActive").prop('checked'),
+        contactNo : $("#edituser_inputContactnumber").val(),
+        email : $("#edituser_inputEmail").val()
+    };
+    console.log(requestData);
+
+    $.ajax("http://localhost:8080/sellnbye/api/user", {
+                data: JSON.stringify(requestData),
+                contentType: 'application/json',
+                type: 'PUT'
+            }).done(function (response) {
+                if (response === true) {
+                    location.reload();
+                    alert("Edited successfully");
+                }
+                else {
+                    alert("Editing user failed");
+                }
+            });
+
+    $('#exampleModal').modal('toggle');
 });

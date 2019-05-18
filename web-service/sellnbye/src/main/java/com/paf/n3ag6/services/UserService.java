@@ -18,6 +18,7 @@ import com.paf.n3ag6.models.AuthRequest;
 import com.paf.n3ag6.models.AuthResponse;
 import com.paf.n3ag6.models.Enums.UserType;
 import com.paf.n3ag6.models.User;
+import com.paf.n3ag6.models.UserUpdateModel;
 
 @Path("/user")
 public class UserService {
@@ -66,11 +67,10 @@ public class UserService {
 	}
 
 	@PUT
-	@Path("/{name}")
-	public boolean EditUser(User user) {
+	@Path("")
+	public boolean EditUser(UserUpdateModel user) {
 		UserDao userDao = new UserDao();
 		try {
-			user.setUserType(UserType.Buyer);
 			if (userDao.isRegisteredUser(user.getUsername())) {
 				return userDao.updateUser(user);
 			} else {
