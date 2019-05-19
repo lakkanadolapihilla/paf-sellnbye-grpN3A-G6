@@ -103,6 +103,26 @@ public class OrderDao {
 		return isSuccess;
 	}
 	
+	public boolean deleteOrder(String companyname) {
+		boolean isSuccess = false;
+		try {
+
+			String sql;
+			sql = "DELETE FROM orders WHERE companyName = ?";
+
+			PreparedStatement stmt = this._dbConnection.prepareStatement(sql);
+
+			stmt.setString(1, companyname);
+
+			isSuccess = stmt.executeUpdate() > 0;
+
+		} catch (Exception ex) {
+			System.out.println("[Error][OrdertDao][deleteOrder] - " + ex.toString());
+			isSuccess = false;
+		}
+		return isSuccess;
+	} 
+	
 //	public AuthResponse authenticate (String username, String password) {
 //		AuthResponse authResponse = new AuthResponse();
 //		try {

@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import com.paf.n3ag6.database.DbConnection;
 import com.paf.n3ag6.models.Product;
+import com.paf.n3ag6.models.ProductUpdateModel;
+import com.paf.n3ag6.models.Enums.UserType;
 
 public class ProductDao {
 
@@ -103,6 +105,49 @@ public class ProductDao {
 		return isSuccess;
 	}
 	
+	public boolean updateProduct(ProductUpdateModel pro) {
+		boolean isSuccess;
+		try {
+
+			String sql;
+			sql = "UPDATE products SET productPrice = ? , productCount= ? WHERE productName = ?";
+
+			PreparedStatement stmt = this._dbConnection.prepareStatement(sql);
+
+			//stmt.setString(4, user.getUsername());
+			stmt.setString(1, pro.getProductPrice());
+			stmt.setString(2, pro.getProductCount());
+			stmt.setString(3, pro.getProductName());
+
+			isSuccess = stmt.executeUpdate() > 0;
+
+		} catch (Exception ex) {
+			System.out.println("[Error][ProductDao][updateProduct] - " + ex.toString());
+			isSuccess = false;
+		}
+		return isSuccess;
+	}
+
+	
+	public boolean deleteProduct(String productname) {
+		boolean isSuccess = false;
+		try {
+
+			String sql;
+			sql = "DELETE FROM products WHERE productName = ?";
+
+			PreparedStatement stmt = this._dbConnection.prepareStatement(sql);
+
+			stmt.setString(1, productname);
+
+			isSuccess = stmt.executeUpdate() > 0;
+
+		} catch (Exception ex) {
+			System.out.println("[Error][ProductDao][deleteProduct] - " + ex.toString());
+			isSuccess = false;
+		}
+		return isSuccess;
+	} 
 //	public AuthResponse authenticate (String username, String password) {
 //		AuthResponse authResponse = new AuthResponse();
 //		try {

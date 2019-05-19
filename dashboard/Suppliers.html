@@ -91,8 +91,8 @@ Navigation Bar Section
 							<li class=""><a href="adminHome.html">Home	</a></li>
               				<li class=""><a href="users.html">User List</a></li>
               				<li class=""><a href="products.html">Product List</a></li>
-              				<li class=""><a href="suppliers.html">Supplier List</a></li>
-              				<li class="active"><a href="Order.html">Order List</a></li>
+              				<li class="active"><a href="suppliers.html">Supplier List</a></li>
+              				<li class=""><a href="Order.html">Order List</a></li>
               				<li class=""><a href="addProducts.html">Products</a></li>
               				<li class=""><a href="addSuppliers.html">Suppliers</a></li>
 			  				<li class=""><a href="addOrder.html">Orders</a></li>
@@ -230,7 +230,7 @@ Body Section
 		<div class="row">
 
 			<div class="span9">
-				<div id="orders_orderlist" class="well well-small">
+				<div id="suppliers_supplierlist" class="well well-small">
 
 				</div>
 			</div>
@@ -318,7 +318,7 @@ Footer
 	</div>
 	<a href="#" class="gotop"><i class="icon-double-angle-up"></i></a>
 	<!-- Placed at the end of the document so the pages load faster -->
-	<div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+	<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
 		aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
@@ -327,30 +327,30 @@ Footer
 				</div>
 				<div class="modal-body">
 					<div class="well">
-						<form id="order_form" class="form-horizontal">
+						<form id="Supplier_form" class="form-horizontal">
 							<div class="control-group">
-								<label class="control-label" for="editorder_companyname">Company name
+								<label class="control-label" for="editSupplier_suppliername">Supplier name
 									<sup>*</sup></label>
 								<div class="controls">
-									<input type="text" id="editorder_companyname" placeholder="Product Name" disabled>
+									<input type="text" id="editSupplier_suppliername" placeholder="Product Name" disabled>
 								</div>
 							</div>
 							<div class="control-group">
-								<label class="control-label" for="editorder_supplierName">Supplier Name <sup>*</sup></label>
+								<label class="control-label" for="editSupplier_companyname">Company name <sup>*</sup></label>
 								<div class="controls">
-									<input type="text" id="editorder_supplierName" placeholder="Product Price">
+									<input type="text" id="editSupplier_companyname" placeholder="Product Price">
 								</div>
 							</div>
 							<div class="control-group">
-								<label class="control-label" for="editorder_inputProduct">Product <sup>*</sup></label>
+								<label class="control-label" for="editSupplier_product">Product <sup>*</sup></label>
 								<div class="controls">
-									<input type="text" id="editorder_inputProduct" placeholder="Product quantity">
+									<input type="text" id="editSupplier_product" placeholder="Product quantity">
 								</div>
 							</div>
 							<div class="control-group">
-								<label class="control-label" for="editproduct_inputQty">Quantity <sup>*</sup></label>
+								<label class="control-label" for="editSupplier_address">Address <sup>*</sup></label>
 								<div class="controls">
-									<input type="text" id="editproduct_inputQty" placeholder="Product quantity">
+									<input type="text" id="editSupplier_address" placeholder="Product quantity">
 								</div>
 							</div>
 							<div class="control-group">
@@ -372,7 +372,7 @@ Footer
 	<script src="assets/js/jquery.easing-1.3.min.js"></script>
 	<script src="assets/js/jquery.scrollTo-1.4.3.1-min.js"></script>
 	<script src="assets/js/shop.js"></script>
-	<script src="scripts/order.js"></script>
+	<script src="scripts/supplier_handler.js"></script>
 </body>
 
 </html>

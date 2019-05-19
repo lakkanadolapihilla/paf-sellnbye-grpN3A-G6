@@ -13,7 +13,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import com.paf.n3ag6.dao.ProductDao;
+import com.paf.n3ag6.dao.UserDao;
 import com.paf.n3ag6.models.Product;
+import com.paf.n3ag6.models.ProductUpdateModel;
 
 
 @Path("/product")
@@ -48,6 +50,19 @@ public class ProductService {
 		}
 	}
 
+	@DELETE
+	@Path("/{name}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public boolean DeleteProduct(@PathParam("name") String name) {
+		ProductDao productDao = new ProductDao();
+		try {
+			return productDao.deleteProduct(name);
+		} finally {
+			productDao.dispose();
+			System.out.println("[Info][ProductService][DeleteProduct] - productDao disposed.");
+		}
+	}
+	
 	@POST
 	@Path("")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -71,6 +86,20 @@ public class ProductService {
 
 	}
 
+	@PUT
+	@Path("")
+	public boolean EditUser(ProductUpdateModel product) {
+		ProductDao productDao = new ProductDao();
+		try {
+			
+				return productDao.updateProduct(product);
+			
+		} finally {
+			productDao.dispose();
+		}
+	}
+
+	
 	@POST
 	@Path("/{name}/address")
 	public Response AddAddressStatus(@PathParam("name") String name) {

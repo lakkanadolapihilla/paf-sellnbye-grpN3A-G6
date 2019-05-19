@@ -98,10 +98,9 @@ Navigation Bar Section
 				<li class=""><a href="products.html">Product List</a></li>
 				<li class=""><a href="suppliers.html">Supplier List</a></li>
 				<li class=""><a href="Order.html">Order List</a></li>
-				<li class="active"><a href="addProducts.html">Products</a></li>
-				<li class=""><a href="addSuppliers.html">Suppliers</a></li>
+				<li class=""><a href="addProducts.html">Products</a></li>
+				<li class="active"><a href="addSuppliers.html">Suppliers</a></li>
 				<li class=""><a href="addOrder.html">Orders</a></li>
-</ul>
 			</ul>
 			
 			<ul class="nav pull-right">
@@ -131,7 +130,7 @@ Navigation Bar Section
 	</div>
 <!-- 
 Body Section 
--->	<div class="row">
+--><div class="row">
 <div id="sidebar" class="span3">
 	<div class="well well-small">
 		<ul class="nav nav-list">
@@ -235,47 +234,54 @@ Body Section
 	<div class="span9">
 	
 <div class="well well-small">
-	<form id="add_Product_form" class="form-horizontal">
-		<h3>Product Details</h3>
+	<form id="Supplier_form" class="form-horizontal">
+		<h3>Supplier Details</h3>
 		<div class="control-group">
-			<label class="control-label" for="addProduct_inputCreator">Creator Name<sup>*</sup></label>
+			<label class="control-label" for="inputSupplierName">Supplier Name<sup>*</sup></label>
 			<div class="controls">
-				<input type="text" id="addProduct_inputCreator" placeholder="Creator Name">
+				<input type="text" id="inputSupplierName" placeholder="Supplier Name">
+			</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="addSup_inputCompany">Company Name<sup>*</sup></label>
+				<div class="controls">
+					<input type="text" id="addSup_inputCompany" placeholder="Company Name">
+				</div>
+		</div>
+		<!-- <div class="control-group">
+			<label class="control-label" for="addProduct_inputProductName">Contact Number<sup>*</sup></label>
+			<div class="controls">
+				<input type="text" id="addProduct_inputProductName" placeholder="Contact Number">
+			</div>
+		</div> -->
+	
+		<div class="control-group">
+			<label class="control-label" for="addSupplier_inputItem">Product Item <sup>*</sup></label>
+			<div class="controls">
+				<input type="text" id="addSupplier_inputItem" placeholder="Product Item">
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label" for="addProduct_inputProductName">Product Name<sup>*</sup></label>
+			<label class="control-label" for="addSupplier_inputAddress">Address <sup>*</sup></label>
 			<div class="controls">
-				<input type="text" id="addProduct_inputProductName" placeholder="Product Name">
+				<input type="text" id="addSupplier_inputAddress" placeholder="Address">
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">Product Image</label>
+			<label class="control-label" for="addSupplier_inputContact">Contact <sup>*</sup></label>
 			<div class="controls">
-				<input type="file" id="addProduct_inputProductImage" placeholder="Image" accept=".png, .jpg, .jpeg">
+				<input type="text" id="addSupplier_inputContact" placeholder="Address">
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label" for="addProduct_inputDescription">Product Description <sup>*</sup></label>
+			<label class="control-label" for="addSupplier_inputEmailt">Email<sup>*</sup></label>
 			<div class="controls">
-				<input type="text" id="addProduct_inputDescription" placeholder="Product Description">
-			</div>
-		</div>
-		<div class="control-group">
-			<label class="control-label" for="addProduct_inputPrice">Product Price <sup>*</sup></label>
-			<div class="controls">
-				<input type="text" id="addProduct_inputPrice" placeholder="Product Price">
-			</div>
-		</div>
-		<div class="control-group">
-			<label class="control-label" for="addProduct_inputQty">Product Quantity<sup>*</sup></label>
-			<div class="controls">
-				<input type="text" id="addProduct_inputQty" placeholder="Product Quantity">
+				<input type="text" id="addSupplier_inputEmail" placeholder="Email">
 			</div>
 		</div>
 		<div class="control-group">
 			<div class="controls">
-				<input type="submit" name="submitProduct" value="Add Product" class="exclusive shopBtn">
+				<input type="submit" name="submitSupplier" value="Add Supplier" class="exclusive shopBtn">
 			</div>
 		</div>
 	</form>
@@ -363,12 +369,12 @@ accompanied by English versions from the 1914 translation by H. Rackham.
 </div>
 <a href="#" class="gotop"><i class="icon-double-angle-up"></i></a>
     <!-- Placed at the end of the document so the pages load faster -->
-  <script src="assets/js/jquery.js"></script>
-	<script src="assets/js/bootstrap.min.js"></script>
-	<script src="assets/js/jquery.easing-1.3.min.js"></script>
-	<script src="assets/js/jquery.scrollTo-1.4.3.1-min.js"></script>
-	<script src="assets/js/shop.js"></script>
-	<script src="scripts/addProduct.js"></script>
-	<script src="scripts/sha256.js"></script>
+		<script src="assets/js/jquery.js"></script>
+		<script src="assets/js/bootstrap.min.js"></script>
+		<script src="assets/js/jquery.easing-1.3.min.js"></script>
+		<script src="assets/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+		<script src="assets/js/shop.js"></script>
+		<script src="scripts/addSupplier.js"></script>
+		<script src="scripts/sha256.js"></script>
   </body>
 </html>

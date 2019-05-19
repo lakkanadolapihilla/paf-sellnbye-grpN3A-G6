@@ -14,6 +14,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.paf.n3ag6.dao.OrderDao;
+import com.paf.n3ag6.dao.ProductDao;
 import com.paf.n3ag6.models.Order;
 
 @Path("/order")
@@ -61,6 +62,20 @@ public class OrderService {
 		}
 	}
 
+	@DELETE
+	@Path("/{name}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public boolean DeleteOrder(@PathParam("name") String name) {
+		OrderDao orderDao = new OrderDao();
+		try {
+			return orderDao.deleteOrder(name);
+		} finally {
+			orderDao.dispose();
+			System.out.println("[Info][OrderService][DeleteOrder] - productDao disposed.");
+		}
+	}
+	
+	
 	@PUT
 	@Path("/{name}")
 	public Response EditUserStatus(@PathParam("name") String name) {
