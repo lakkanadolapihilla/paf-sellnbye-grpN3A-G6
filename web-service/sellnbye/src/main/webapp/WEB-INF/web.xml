@@ -23,8 +23,19 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>add</display-name>
+		<servlet-name>add</servlet-name>
+		<servlet-class>com.paf.n3ag6.services.add</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>sellnbye</servlet-name>
 		<url-pattern>/api/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>add</servlet-name>
+		<url-pattern>/add</url-pattern>
 	</servlet-mapping>
 </web-app>

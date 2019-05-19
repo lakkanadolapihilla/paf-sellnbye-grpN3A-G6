@@ -8,7 +8,7 @@ public class DbConnection{
 	public Connection getConnection(){
 		try {
 	        Class.forName("com.mysql.jdbc.Driver");
-	        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/paf_n3a_g6_database?useSSL=false","root", "root");
+	        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/paf_n3a_g6_database","root","");
 	        System.out.println("[Info][DbConnection][getConnection] - Opening DB connection");
 	        return connection;
 	    }catch(Exception ex) {
