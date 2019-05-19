@@ -17,7 +17,7 @@ $("#add_Product_form").submit(function (event) {
                 "productCount": $("#addProduct_inputQty").val()
             }
             
-            $.ajax("http://localhost:8083/sellnbye/api/product", {
+            $.ajax(`${getHost()}product`, {
                 data: JSON.stringify(data),
                 contentType: 'application/json',
                 type: 'POST'

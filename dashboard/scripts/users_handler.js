@@ -1,6 +1,6 @@
 $("#users_userlist").ready(function () {
 
-    $.ajax("http://localhost:8082/sellnbye/api/user", {
+    $.ajax(`${getHost()}user`, {
         contentType: 'application/json',
         type: 'GET'
     }).done(function (response) {
@@ -51,7 +51,7 @@ $("#login_form").submit(function (event) {
         "password": SHA256($("#login_inputPassword").val()).toUpperCase(),
         "username": $("#login_inputUserName").val()
     }
-    $.ajax("http://localhost:8082/sellnbye/api/user/login", {
+    $.ajax(`${getHost}user/login`, {
         data: JSON.stringify(data),
         contentType: 'application/json',
         type: 'POST'
@@ -63,7 +63,7 @@ $("#login_form").submit(function (event) {
 $('body').on('click', '#user_editUser_btn', function (event) {
     var username = $(event.target).parent().parent().parent().parent().find('.username_header_id').html();
 
-    $.ajax(`http://localhost:8082/sellnbye/api/user/${username}`, {
+    $.ajax(`${getHost()}user/${username}`, {
         contentType: 'application/json',
         type: 'GET'
     }).done(function (response) {
@@ -84,7 +84,7 @@ $('body').on('click', '#user_editUser_btn', function (event) {
 $('body').on('click', '#user_deleteUser_btn', function (event) {
     var username = $(event.target).parent().parent().parent().parent().find('.username_header_id').html();
 
-    $.ajax(`http://localhost:8082/sellnbye/api/user/${username}`, {
+    $.ajax(`${getHost()}user/${username}`, {
         contentType: 'application/json',
         type: 'DELETE'
     }).done(function (response) {
@@ -108,7 +108,7 @@ $("#edituser_form").submit(function (event) {
     };
     console.log(requestData);
 
-    $.ajax("http://localhost:8083/sellnbye/api/user", {
+    $.ajax(`${getHost()}user`, {
                 data: JSON.stringify(requestData),
                 contentType: 'application/json',
                 type: 'PUT'

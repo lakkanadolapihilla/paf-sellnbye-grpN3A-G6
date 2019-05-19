@@ -1,6 +1,6 @@
 $("#products_productlist").ready(function () {
 
-    $.ajax("http://localhost:8083/sellnbye/api/product", {
+    $.ajax(`${getHost()}product`, {
         contentType: 'application/json',
         type: 'GET'
     }).done(function (response) {

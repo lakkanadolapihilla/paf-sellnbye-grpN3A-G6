@@ -1,6 +1,6 @@
 $("#products_productlist").ready(function () {
 
-    $.ajax("http://localhost:8083/sellnbye/api/product", {
+    $.ajax(`${getHost()}product`, {
         contentType: 'application/json',
         type: 'GET'
     }).done(function (response) {
@@ -49,7 +49,7 @@ $("#products_productlist").ready(function () {
 $('body').on('click', '#product_editProduct_btn', function (event) {
     var productname = $(event.target).parent().parent().parent().parent().find('.productName_header_id').html();
 
-    $.ajax(`http://localhost:8082/sellnbye/api/product/${productname}`, {
+    $.ajax(`${getHost()}product/${productname}`, {
         contentType: 'application/json',
         type: 'GET'
     }).done(function (response) {
@@ -65,7 +65,7 @@ $('body').on('click', '#product_editProduct_btn', function (event) {
 $('body').on('click', '#product_deleteProduct_btn', function (event) {
     var productname = $(event.target).parent().parent().parent().parent().find('.productName_header_id').html();
 
-    $.ajax(`http://localhost:8083/sellnbye/api/product/${productname}`, {
+    $.ajax(`${getHost()}product/${productname}`, {
         contentType: 'application/json',
         type: 'DELETE'
     }).done(function (response) {
@@ -88,7 +88,7 @@ $("#product_form").submit(function (event) {
     };
     console.log(requestData);
 
-    $.ajax("http://localhost:8083/sellnbye/api/product", {
+    $.ajax(`${getHost()}product", {
                 data: JSON.stringify(requestData),
                 contentType: 'application/json',
                 type: 'PUT'

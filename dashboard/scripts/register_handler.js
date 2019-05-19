@@ -17,7 +17,7 @@ $("#buyer_registration_form").submit(function (event) {
                 "username": $("#registration_inputUsername").val()
             }
             
-            $.ajax("http://localhost:8082/sellnbye/api/user", {
+            $.ajax(`${getHost()}user`, {
                 data: JSON.stringify(data),
                 contentType: 'application/json',
                 type: 'POST'

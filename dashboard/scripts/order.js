@@ -1,6 +1,6 @@
 $("#orders_orderlist").ready(function () {
 
-    $.ajax("http://localhost:8083/sellnbye/api/order", {
+    $.ajax(`${getHost()}order`, {
         contentType: 'application/json',
         type: 'GET'
     }).done(function (response) {
@@ -48,7 +48,7 @@ $("#orders_orderlist").ready(function () {
 $('body').on('click', '#order_editorder_btn', function (event) {
     var ordername = $(event.target).parent().parent().parent().parent().find('.order_header_id').html();
 
-    $.ajax(`http://localhost:8082/sellnbye/api/order/${ordername}`, {
+    $.ajax(`${getHost()}order/${ordername}`, {
         contentType: 'application/json',
         type: 'GET'
     }).done(function (response) {
@@ -65,7 +65,7 @@ $('body').on('click', '#order_editorder_btn', function (event) {
 $('body').on('click', '#order_deleteorder_btn', function (event) {
     var ordername = $(event.target).parent().parent().parent().parent().find('.order_header_id').html();
 
-    $.ajax(`http://localhost:8083/sellnbye/api/order/${ordername}`, {
+    $.ajax(`${getHost()}order/${ordername}`, {
         contentType: 'application/json',
         type: 'DELETE'
     }).done(function (response) {

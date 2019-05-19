@@ -14,7 +14,7 @@ $("#Supplier_form").submit(function (event) {
                 "email": $("#addSupplier_inputEmail").val()
             }
             
-            $.ajax("http://localhost:8083/sellnbye/api/supplier", {
+            $.ajax(`${getHost()}supplier`, {
                 data: JSON.stringify(data),
                 contentType: 'application/json',
                 type: 'POST'

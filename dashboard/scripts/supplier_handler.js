@@ -1,6 +1,6 @@
 $("#suppliers_supplierlist").ready(function () {
 
-    $.ajax("http://localhost:8082/sellnbye/api/supplier", {
+    $.ajax(`${getHost()}supplier`, {
         contentType: 'application/json',
         type: 'GET'
     }).done(function (response) {
@@ -50,7 +50,7 @@ $("#suppliers_supplierlist").ready(function () {
 $('body').on('click', '#supplier_editProduct_btn', function (event) {
     var suppliername = $(event.target).parent().parent().parent().parent().find('.supplier_header_id').html();
 
-    $.ajax(`http://localhost:8082/sellnbye/api/supplier/${suppliername}`, {
+    $.ajax(`${getHost()}supplier/${suppliername}`, {
         contentType: 'application/json',
         type: 'GET'
     }).done(function (response) {
@@ -66,7 +66,7 @@ $('body').on('click', '#supplier_editProduct_btn', function (event) {
 $('body').on('click', '#supplier_deleteSupplier_btn', function (event) {
     var Suppliername = $(event.target).parent().parent().parent().parent().find('.supplier_header_id').html();
 
-    $.ajax(`http://localhost:8083/sellnbye/api/supplier/${Suppliername}`, {
+    $.ajax(`${getHost()}supplier/${Suppliername}`, {
         contentType: 'application/json',
         type: 'DELETE'
     }).done(function (response) {
