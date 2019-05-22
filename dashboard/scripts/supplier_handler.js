@@ -54,9 +54,9 @@ $('body').on('click', '#supplier_editProduct_btn', function (event) {
         contentType: 'application/json',
         type: 'GET'
     }).done(function (response) {
-        $("#editSupplier_suppliername").val(response.supplierName);
-        $("#editSupplier_companyname").val(response.companyName);
-        $("#editSupplier_product").val(response.productItem);
+        $("#editSupplier_suppliername").val(response.suppliername);
+        $("#editSupplier_companyname").val(response.companyname);
+        $("#editSupplier_product").val(response.productitem);
         $("#editSupplier_address").val(response.address);
     });
 
@@ -77,4 +77,32 @@ $('body').on('click', '#supplier_deleteSupplier_btn', function (event) {
             alert("Delete Failed");
         }
     });
+});
+
+$("#Supplier_form").submit(function (event) {
+    event.preventDefault();
+
+    var requestData = {
+        supplierName : $("#editSupplier_suppliername").val(),
+        companyName : $("#editSupplier_companyname").val(),
+        productItem : $("#editSupplier_product").val(),
+        address : $("#editSupplier_address").val()
+    };
+    console.log(requestData);
+
+    $.ajax(`${getHost()}supplier`, {
+                data: JSON.stringify(requestData),
+                contentType: 'application/json',
+                type: 'PUT'
+            }).done(function (response) {
+                if (response === true) {
+                    location.reload();
+                    alert("Edited successfully");
+                }
+                else {
+                    alert("Editing user failed");
+                }
+            });
+
+    $('#exampleModal2').modal('toggle');
 });

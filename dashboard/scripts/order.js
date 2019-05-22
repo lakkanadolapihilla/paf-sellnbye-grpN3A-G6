@@ -11,9 +11,9 @@ $("#orders_orderlist").ready(function () {
             <div class="row-fluid">
                 <div class="span6">
                     
-                    <h5 class="order_header_id">${value.companyName}</h5>
+                    <h5 class="order_header_id">${value.supplierName}</h5>
                     <p>
-                       Supplier: ${value.supplierName}
+                       Supplier: ${value.companyName}
                     </p>
                     <p>
                         Needed Product: ${value.product}
@@ -44,6 +44,7 @@ $("#orders_orderlist").ready(function () {
         $("#orders_orderlist").append(newItem);
     });
 });
+
 
 $('body').on('click', '#order_editorder_btn', function (event) {
     var ordername = $(event.target).parent().parent().parent().parent().find('.order_header_id').html();
@@ -76,4 +77,33 @@ $('body').on('click', '#order_deleteorder_btn', function (event) {
             alert("Delete Failed");
         }
     });
+});
+
+
+$("#order_form").submit(function (event) {
+    event.preventDefault();
+
+    var requestData = {
+        companyName : $("#editorder_companyname").val(),
+        supplierName : $("#editorder_supplierName").val(),
+        product: $("#editorder_inputProduct").val(),
+        qty : $("#editproduct_inputQty").val()
+    };
+    console.log(requestData);
+
+    $.ajax(`${getHost()}order`, {
+                data: JSON.stringify(requestData),
+                contentType: 'application/json',
+                type: 'PUT'
+            }).done(function (response) {
+                if (response === true) {
+                    location.reload();
+                    alert("Edited successfully");
+                }
+                else {
+                    alert("Editing order failed");
+                }
+            });
+
+    $('#exampleModal2').modal('toggle');
 });

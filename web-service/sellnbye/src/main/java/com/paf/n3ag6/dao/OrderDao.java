@@ -9,6 +9,9 @@ import java.util.ArrayList;
 
 import com.paf.n3ag6.database.DbConnection;
 import com.paf.n3ag6.models.Order;
+import com.paf.n3ag6.models.Supplier;
+import com.paf.n3ag6.models.SupplierUpdateModel;
+import com.paf.n3ag6.models.OrderUpdateModel;
 
 public class OrderDao {
 	private Connection _dbConnection;
@@ -103,16 +106,16 @@ public class OrderDao {
 		return isSuccess;
 	}
 	
-	public boolean deleteOrder(String companyname) {
+	public boolean deleteOrder(String supppliername) {
 		boolean isSuccess = false;
 		try {
 
 			String sql;
-			sql = "DELETE FROM orders WHERE companyName = ?";
+			sql = "DELETE FROM orders WHERE supplierName = ?";
 
 			PreparedStatement stmt = this._dbConnection.prepareStatement(sql);
 
-			stmt.setString(1, companyname);
+			stmt.setString(1, supppliername);
 
 			isSuccess = stmt.executeUpdate() > 0;
 
@@ -123,6 +126,29 @@ public class OrderDao {
 		return isSuccess;
 	} 
 	
+	public boolean updateOrder(OrderUpdateModel order) {
+		boolean isSuccess;
+		try {
+
+			String sql;
+			sql = "UPDATE orders SET supplierName = ? ,product = ? , qty = ? WHERE companyName = ?";
+
+			PreparedStatement stmt = this._dbConnection.prepareStatement(sql);
+
+			stmt.setString(4, order.getCompanyName());
+			stmt.setString(1, order.getSupplierName());
+			stmt.setString(2, order.getProduct());
+			stmt.setString(3, order.getQty());
+
+			isSuccess = stmt.executeUpdate() > 0;
+
+		} catch (Exception ex) {
+			System.out.println("[Error][SupplierDao][updateSupplier] - " + ex.toString());
+			isSuccess = false;
+		}
+		return isSuccess;
+	}
+
 //	public AuthResponse authenticate (String username, String password) {
 //		AuthResponse authResponse = new AuthResponse();
 //		try {

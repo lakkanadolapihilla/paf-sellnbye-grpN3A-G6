@@ -88,7 +88,7 @@ $("#product_form").submit(function (event) {
     };
     console.log(requestData);
 
-    $.ajax(`${getHost()}product", {
+    $.ajax(`${getHost()}product`, {
                 data: JSON.stringify(requestData),
                 contentType: 'application/json',
                 type: 'PUT'
@@ -102,5 +102,5 @@ $("#product_form").submit(function (event) {
                 }
             });
 
-    $('#exampleModal').modal('toggle');
+    $('#exampleModal1').modal('toggle');
 });

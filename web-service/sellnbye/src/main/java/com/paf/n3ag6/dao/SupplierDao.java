@@ -54,7 +54,7 @@ public class SupplierDao {
 		try {
 
 			String sql;
-			sql = "SELECT * FROM products WHERE supplier = ?";
+			sql = "SELECT * FROM supplier WHERE supplierName = ?";
 
 			PreparedStatement stmt = this._dbConnection.prepareStatement(sql);
 

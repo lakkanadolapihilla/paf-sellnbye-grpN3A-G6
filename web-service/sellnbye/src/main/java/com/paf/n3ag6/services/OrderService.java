@@ -15,7 +15,9 @@ import javax.ws.rs.core.Response;
 
 import com.paf.n3ag6.dao.OrderDao;
 import com.paf.n3ag6.dao.ProductDao;
+import com.paf.n3ag6.dao.SupplierDao;
 import com.paf.n3ag6.models.Order;
+import com.paf.n3ag6.models.OrderUpdateModel;
 
 @Path("/order")
 public class OrderService {
@@ -49,6 +51,20 @@ public class OrderService {
 		}
 	}
 
+	@PUT
+	@Path("")
+	public boolean EditOrder(OrderUpdateModel order) {
+		OrderDao orderDao = new OrderDao();
+		try {
+			
+				return orderDao.updateOrder(order);
+			
+		} finally {
+			orderDao.dispose();
+		}
+	}
+	
+	
 	@POST
 	@Path("")
 	@Consumes(MediaType.APPLICATION_JSON)
