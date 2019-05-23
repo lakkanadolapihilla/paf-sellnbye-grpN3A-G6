@@ -16,7 +16,7 @@ $("#index_productlist").ready(function () {
                     <p>${value.productName}</p>
                     <p><strong>  ${value.productPrice}</strong></p>
                     <div class="btn-group">
-                    <h4><a href="product_details.html" class="shopBtn" href="#" title="add to cart"> Product Details </a></h4> 
+                    <h4><a href="addToCart.html" class="shopBtn" href="#" title="add to cart"> Product Details </a></h4> 
                     </div>
                 </div>
                 <br>
